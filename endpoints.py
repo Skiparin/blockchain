@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+import json
 from hashing import mine_hash
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def mine_block():
 	blocknumber = int(block_json[-1]['blocknumber']) + 1
 	old_hash = block_json[-1]['old_hash']
 	data = request_json["data"]
-	return mine_hash(blocknumber,data,old_hash)
+	return json.dumps(mine_hash(blocknumber,data,old_hash), indent=4)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
