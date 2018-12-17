@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 from hashing import mine_hash
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ def get_chain():
 def test():
     return "test"
 
-@app.route('/post', methods=['POST'])
+@app.route('/mine', methods=['POST'])
 def mine_block():
 	request_json = request.get_json()
 	block_json = get_chain()
