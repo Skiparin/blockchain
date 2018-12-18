@@ -5,19 +5,13 @@ import json
 import os.path
 import requests
 from hashing import mine_hash
-import BlockChain
+from blockchain import BlockChain
 
 app = Flask(__name__)
 
 connections = []
 
 blockchain = BlockChain()
-
-"""
-def save_chain(chain):
-	with open('blockchain.json', 'w') as fp:
-			json.dump(chain, fp)
-"""
 
 
 @app.route('/test', methods=['GET'])
@@ -26,16 +20,15 @@ def test():
 
 
 @app.route('/transactions/new', methods=['POST'])
-def test():
+def new_transaction():
     request_json = request.get_json()
     blockchain.add_transaction(request_json)
     return jsonify(request_json), 201
 
 
 @app.route('/transactions/get', methods=['GET'])
-def test():
-    request_json = request.get_json()
-    transactions = blockchain.get_transactions(request_json)
+def get_transactions():
+    transactions = blockchain.get_transactions()
     return jsonify(transactions), 201
 
 
@@ -43,17 +36,10 @@ def test():
 def mine_block():
 	latest_block = blockchain.mine()
 	return jsonify(latest_block), 201
-	"""
-	request_json = request.get_json()
-	block_json = get_chain()
-	blocknumber = int(block_json[-1]['blocknumber']) + 1
-	old_hash = block_json[-1]['old_hash']
-	data = request_json["data"]
-	return json.dumps(mine_hash(blocknumber, data, old_hash), indent=4)
-	"""
+
 
 @app.route('/chain/get', methods=['GET'])
-def last_block():
+def get_chain():
 	block_json = blockchain.get_chain()
 	return jsonify(block_json)
 
