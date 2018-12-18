@@ -4,6 +4,7 @@ from flask import jsonify
 import json
 import os.path
 import requests
+import sys
 from hashing import mine_hash
 from blockchain import BlockChain
 
@@ -13,6 +14,8 @@ connections = ["http://192.168.0.1:5001",
 			   "http://192.168.0.1:5002",
 			   "http://192.168.0.1:5003",
 			   "http://192.168.0.1:5004"]
+
+connections.remove(sys.argv[1])
 
 blockchain = BlockChain()
 

@@ -74,15 +74,12 @@ class BlockChain:
 
 
 	def is_block_valid(self, block, old_block):
-		print("********************")
-		print(str(block))
-		print(str(old_block))
 		if (block["blocknumber"] == (old_block["blocknumber"] + 1)
 			and block["old_hash"] == old_block["hash"]):
 			
 			temp_hash_256_string = str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"])
 			temp_hash = self.hash_256(temp_hash_256_string + str(block['nounce']))
-			print(temp_hash)
+			
 			if temp_hash == block["hash"]:
 				return True
 		return False
