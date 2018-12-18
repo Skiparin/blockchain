@@ -9,10 +9,10 @@ from blockchain import BlockChain
 
 app = Flask(__name__)
 
-connections = ["http://localhost:5001",
-			   "http://localhost:5002",
-			   "http://localhost:5003",
-			   "http://localhost:5004"]
+connections = ["http://192.168.0.1:5001",
+			   "http://192.168.0.1:5002",
+			   "http://192.168.0.1:5003",
+			   "http://192.168.0.1:5004"]
 
 blockchain = BlockChain()
 
