@@ -39,6 +39,9 @@ def validate_block():
 		blockchain.add_block_to_chain(request_json)
 		blockchain.clear_transactions()
 		send_block_to_be_validated(request_json)
+		return request_json
+	else:
+		return "Failure."
 
 
 @app.route('/transactions/new', methods=['POST'])
