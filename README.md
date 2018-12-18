@@ -17,9 +17,6 @@ Group: Ørvur Guttesen, Tim Hemmingsen, Nicolai Mikkelsen, Laura Hartig & Michae
 
 - docker-compose
 
-## How to become a peer
-
-
 ### Clone the project
 
 First go to the directory of your choise.
@@ -29,20 +26,12 @@ To clone the project type:
 git clone https://github.com/Skiparin/blockchain
 ```
 
-Now you will have the project on the machines.
+Now you will have the project on the machine.
 
 Then enter the folder:
 ```
 cd blockchain/
 ```
-
-### Run the application
-
-Now that ur inside the folder you can start the flask application:
-```
-python3 endpoints.py
-```
-
 
 ## How to reporduce the setup
 
@@ -86,7 +75,49 @@ Check for the four contianers:
 docker ps -a
 ```
 
-This will list all containers, you should see four containers named: peer1, peer2, peer3 and peer4.
+This will list all containers, you should see four containers named: bc_one, bc_two, bc_three, bc_four.
+
+### Docker containers
+
+Names: bc_one, bc_two, bc_three, bc_four.
+
+Ports: 5001, 5002, 5003, 5004.
+
+## How to become a peer
+
+### Run the application
+
+Inside the `blockchain` folder type:
+```
+python3 endpoints.py
+```
+
+Open a new terminal:
+
+```
+curl -d '{"key":<connection>, "value":<ip>} -X POST http://localhost:5001/join_network'
+```
+
+You can also curl to another container using a given port (See under "Docker containers")
+
+
+### Endpoints
+
+- /validate_block [POST]
+
+- /transactions/new [POST] 
+
+- /transactions/get [GET]
+
+- /mine [POST]
+
+- /chain/get [GET]
+
+- /block/latest [GET]
+
+- /join_network [POST]
+
+- /delete_info [GET]
 
 ## Sources
 
