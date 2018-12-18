@@ -77,17 +77,12 @@ class BlockChain:
 		print("********************")
 		print(str(block))
 		print(str(old_block))
-		print(str(block["blocknumber"] == (old_block["blocknumber"] + 1))
-		print(str(block["old_hash"] == old_block["hash"]))
-		print(str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"]))
-		print(self.hash_256(hash_256_string + str(block['nounce'])))
-		print(str(temp_hash == block["hash"]))
 		if (block["blocknumber"] == (old_block["blocknumber"] + 1)
 			and block["old_hash"] == old_block["hash"]):
 			
 			temp_hash_256_string = str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"])
 			temp_hash = self.hash_256(hash_256_string + str(block['nounce']))
-			
+			print(temp_hash)
 			if temp_hash == block["hash"]:
 				return True
 		return False
