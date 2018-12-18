@@ -38,6 +38,19 @@ class BlockChain:
 		return self.chain
 
 
+	def check_if_transaction_exists(self, transaction):
+		for t in self.transactions:
+			if str(t) == str(transaction):
+				return True
+
+		return False
+
+
+	def validate_block(self, block):
+		latest_block = self.chain[-1]
+		return is_block_valid(block, latest_block)
+
+
 	def mine(self):
 		latest_block = self.chain[-1]
 		data = self.transactions
@@ -58,6 +71,18 @@ class BlockChain:
 
 				self.add_block_to_chain(block)
 				return block
+
+
+	def is_block_valid(self, block, old_block):
+		if (block["blocknumber"] == (old_block["blocknumber"] + 1)
+			and block["old_hash"] == old_block["hash"]):
+			
+			temp_hash_256_string = str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"])
+			temp_hash = self.hash_256(hash_256_string + str(block['nounce']))
+			
+			if temp_hash == block["hash"]:
+				return True
+		return False
 
 
 	def hash_256(self, string_to_hash):

@@ -9,7 +9,7 @@ from blockchain import BlockChain
 
 app = Flask(__name__)
 
-connections = []
+connections = ["localhost:5000", "localhost:5001"]
 
 blockchain = BlockChain()
 
@@ -19,11 +19,27 @@ def test():
     return "test"
 
 
+def send_transactions_to_network(transaction):
+	
+		for conn in connections:
+			requests.post(conn + "/transactions/new", json=transaction)
+
+
+@app.route('/validate_block', methods=['POST'])
+def new_transaction():
+	request_json = request.get_json()
+	if blockchain.validate_block(request_json):
+
+
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     request_json = request.get_json()
-    blockchain.add_transaction(request_json)
-    return jsonify(request_json), 201
+    if not blockchain.check_if_transaction_exists(request_json):
+	    blockchain.add_transaction(request_json)
+	    send_transactions_to_network(request_json)
+    	return jsonify(request_json), 201
+    else:
+    	return "Transaction already exists", 400
 
 
 @app.route('/transactions/get', methods=['GET'])
