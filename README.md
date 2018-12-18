@@ -105,19 +105,62 @@ You can also curl to another container using a given port (See under "Docker con
 
 - /validate_block [POST]
 
+Send a block as json. Example:
+
+{
+        "blocknumber": 1,
+        "data": [
+            {
+                "from": "Hans",
+                "message": "Hello Emil",
+                "to": "Emil"
+            },
+            {
+                "from": "Emil",
+                "message": "Hello Hans",
+                "to": "Hans"
+            }
+        ],
+        "hash": "00003749bba2d17913b31342bd3a644f29ae9897fa67a17eaa68d54ed3482a91",
+        "nounce": 109507,
+        "old_hash": "0000e35b7ff1b88879dc3fad7fc7e85a5f354c806b7c17b684ab10cb53a817b5"
+}
+
 - /transactions/new [POST] 
+
+Send a transaction as json. Example:
+
+{
+  "from":"Emil",
+  "to":"Hans",
+  "message":"Hello Hans"
+}
 
 - /transactions/get [GET]
 
+No params required.
+
 - /mine [POST]
+
+No params required.
 
 - /chain/get [GET]
 
+No params required.
+
 - /block/latest [GET]
+
+No params required.
 
 - /join_network [POST]
 
+Send json with connection to where an application is running. Example:
+
+{"connection": "http://192.168.0.1:5001"}
+
 - /delete_info [GET]
+
+No params required.
 
 ## Sources
 
