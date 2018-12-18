@@ -48,7 +48,7 @@ class BlockChain:
 
 	def validate_block(self, block):
 		latest_block = self.chain[-1]
-		return is_block_valid(block, latest_block)
+		return self.is_block_valid(block, latest_block)
 
 
 	def mine(self):
