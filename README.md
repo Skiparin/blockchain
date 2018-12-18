@@ -35,9 +35,9 @@ cd blockchain/
 
 ## How to reporduce the setup
 
-First follow the steps under 'How to become a peer' called 'Clone the project' 
+First follow the steps under 'Clone the project'
 
-Inside the folder you will have two docker files `Dockerfile` and `docker-compose.yml`. These are the files we will use to setup the inveioment with the four p2p nodes.
+Inside the `blockchain` folder you will have two docker files `Dockerfile` and `docker-compose.yml`. These are the files we will use to setup the inveioment with the four p2p nodes.
 
 So now you want to build your image: (It is important that you do this inside the blockchain folder, and dont forget the `.` at the end!)
 ```
