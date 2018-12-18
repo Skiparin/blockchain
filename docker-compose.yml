@@ -1,0 +1,43 @@
+version: '2'
+services:
+  peerone:
+    image: "blockchain_image" 
+    container_name: bc_one
+    ports:
+     - "5001:5000"
+    command: bash -c "git clone https://github.com/Skiparin/blockchain.git &&  python3 blockchain/endpoints.py 'http://192.168.0.1:5001'"
+    tty: true
+    networks:
+            - dockernet
+  peertwo:
+    image: "blockchain_image" 
+    container_name: bc_two
+    ports:
+     - "5002:5000"
+    command: bash -c "git clone https://github.com/Skiparin/blockchain.git &&  python3 blockchain/endpoints.py 'http://192.168.0.1:5002'"
+    tty: true
+    networks:
+            - dockernet
+  peerthree:
+    image: "blockchain_image" 
+    container_name: bc_three
+    ports:
+     - "5003:5000"
+    command: bash -c "git clone https://github.com/Skiparin/blockchain.git &&  python3 blockchain/endpoints.py 'http://192.168.0.1:5003'"
+    tty: true
+    networks:
+            - dockernet
+  peerfour:
+    image: "blockchain_image" 
+    container_name: bc_four
+    ports:
+     - "5004:5000"
+    command: bash -c "git clone https://github.com/Skiparin/blockchain.git &&  python3 blockchain/endpoints.py 'http://192.168.0.1:5004'"
+    tty: true
+    networks:
+            - dockernet
+
+
+networks:
+    dockernet:
+        external: true
