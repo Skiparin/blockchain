@@ -74,6 +74,14 @@ class BlockChain:
 
 
 	def is_block_valid(self, block, old_block):
+		print("********************")
+		print(str(block))
+		print(str(old_block))
+		print(block["blocknumber"] == (old_block["blocknumber"] + 1)
+		print(block["old_hash"] == old_block["hash"])
+		print(str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"]))
+		print(self.hash_256(hash_256_string + str(block['nounce'])))
+		print(temp_hash == block["hash"])
 		if (block["blocknumber"] == (old_block["blocknumber"] + 1)
 			and block["old_hash"] == old_block["hash"]):
 			
