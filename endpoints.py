@@ -20,15 +20,22 @@ def test():
 
 
 def send_transactions_to_network(transaction):
-	
 		for conn in connections:
 			requests.post(conn + "/transactions/new", json=transaction)
 
 
+def send_block_to_be_validated(block):
+	for conn in connections:
+		requests.post(conn + "validate_block", json=transaction)
+
+
 @app.route('/validate_block', methods=['POST'])
-def new_transaction():
+def validate_block():
 	request_json = request.get_json()
 	if blockchain.validate_block(request_json):
+		blockchain.add_block_to_chain(request_json)
+		blockchain.clear_transactions()
+		send_block_to_be_validated(request_json)
 
 
 @app.route('/transactions/new', methods=['POST'])
@@ -50,8 +57,9 @@ def get_transactions():
 
 @app.route('/mine', methods=['POST'])
 def mine_block():
-	latest_block = blockchain.mine()
-	return jsonify(latest_block), 201
+	block = blockchain.mine()
+	send_block_to_be_validated(block)
+	return jsonify(block), 201
 
 
 @app.route('/chain/get', methods=['GET'])
