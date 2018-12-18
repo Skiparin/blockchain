@@ -15,9 +15,11 @@ connections = ["http://192.168.0.1:5001",
 			   "http://192.168.0.1:5003",
 			   "http://192.168.0.1:5004"]
 
-print(str(connections))
+
 
 connections.remove(sys.argv[1])
+
+print(str(connections))
 
 blockchain = BlockChain()
 
