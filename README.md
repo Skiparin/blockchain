@@ -6,16 +6,13 @@ Group: Ørvur Guttesen, Tim Hemmingsen, Nicolai Mikkelsen, Laura Hartig & Michae
 
 ## Requirements
 
-### Become a peer
+- docker
+
+- docker-compose
 
 - flask
 
 - requests
-
-### For reproduction
-- docker
-
-- docker-compose
 
 ### Clone the project
 
