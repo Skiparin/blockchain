@@ -6,13 +6,21 @@ Group: Ørvur Guttesen, Tim Hemmingsen, Nicolai Mikkelsen, Laura Hartig & Michae
 
 ## Requirements
 
+### Become a peer
+
 - flask
 
+- requests
+
+### For reproduction
 - docker
 
 - docker-compose
 
-## How to reporduce the setup
+## How to become a peer
+
+
+### Clone the project
 
 First go to the directory of your choise.
 
@@ -28,6 +36,18 @@ Then enter the folder:
 cd blockchain/
 ```
 
+### Run the application
+
+Now that ur inside the folder you can start the flask application:
+```
+python3 endpoints.py
+```
+
+
+## How to reporduce the setup
+
+First follow the steps under 'How to become a peer' called 'Clone the project' 
+
 Inside the folder you will have two docker files `Dockerfile` and `docker-compose.yml`. These are the files we will use to setup the inveioment with the four p2p nodes.
 
 So now you want to build your image: (It is important that you do this inside the blockchain folder, and dont forget the `.` at the end!)
@@ -40,6 +60,18 @@ Confirm the image:
 docker images
 ```
 check for the image with the name `blockchain_image`.
+
+Now we need to setup the network in order to make the peer to peer section work:
+
+```
+docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 dockernet
+```
+
+To check that it worked type:
+
+```
+docker network ls
+```
 
 Now that you got your images you can get your docker containers up and running.
 To run the docker-compose type:
