@@ -9,7 +9,10 @@ from blockchain import BlockChain
 
 app = Flask(__name__)
 
-connections = ["http://localhost:5000", "http://localhost:5001"]
+connections = ["http://localhost:5001",
+			   "http://localhost:5002",
+			   "http://localhost:5003",
+			   "http://localhost:5004"]
 
 blockchain = BlockChain()
 
@@ -26,7 +29,7 @@ def send_transactions_to_network(transaction):
 
 def send_block_to_be_validated(block):
 	for conn in connections:
-		requests.post(conn + "validate_block", json=transaction)
+		requests.post(conn + "/validate_block", json=block)
 
 
 @app.route('/validate_block', methods=['POST'])
@@ -59,6 +62,7 @@ def get_transactions():
 def mine_block():
 	block = blockchain.mine()
 	send_block_to_be_validated(block)
+	blockchain.clear_transactions()
 	return jsonify(block), 201
 
 
