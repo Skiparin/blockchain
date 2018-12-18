@@ -95,7 +95,7 @@ python3 endpoints.py
 Open a new terminal:
 
 ```
-curl -d '{"key":<connection>, "value":<ip>} -X POST http://localhost:5001/join_network'
+curl -d '{"connection":<ip>}' -X POST http://localhost:5001/join_network'
 ```
 
 You can also curl to another container using a given port (See under "Docker containers")
@@ -161,6 +161,13 @@ Send json with connection to where an application is running. Example:
 - /delete_info [GET]
 
 No params required.
+
+### Run test
+
+Enther the blockchain folder and type:
+```
+python3 test.py
+```
 
 ## Sources
 
