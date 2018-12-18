@@ -47,3 +47,14 @@ docker ps -a
 ```
 
 This will list all containers, you should see four containers named: peer1, peer2, peer3 and peer4.
+
+## Sources
+
+Link, description (wisiting date)
+
+- http://adilmoujahid.com/posts/2018/03/intro-blockchain-bitcoin-python/?fbclid=IwAR0PJirurp00Pj4OdxDjqktRtKgTjcHB55mC_-CumJPKa-QnbyENWWzL0Ms, A Practical Introduction to Blockchain with Python (16-12-2018)
+
+
+- https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b?fbclid=IwAR1lvlgLq-sazc0l7U-DPSs0c-ypJUleEDBZLBZkLkAk-1D-9scJ279BZs8, Let’s Build the Tiniest Blockchain (17-12-2018)
+
+- https://forums.docker.com/t/accessing-host-machine-from-within-docker-container/14248/4?fbclid=IwAR2uzLnXZfA60TFvS_c_e8OF4QU9Pq7Co-knZuBjF8NKNZJWIBqUhS_tpfM, Accessing host machine from within docker container (17-12-2018)
