@@ -4,6 +4,14 @@ Group: Ørvur Guttesen, Tim Hemmingsen, Nicolai Mikkelsen, Laura Hartig & Michae
 
 ---
 
+## Requirements
+
+- flask
+
+- docker
+
+- docker-compose
+
 ## How to reporduce the setup
 
 First go to the directory of your choise.
@@ -24,14 +32,14 @@ Inside the folder you will have two docker files `Dockerfile` and `docker-compos
 
 So now you want to build your image: (It is important that you do this inside the blockchain folder, and dont forget the `.` at the end!)
 ```
-docker build -t blockchain .
+docker build -t blockchain_image .
 ``` 
 
 Confirm the image: 
 ```
 docker images
 ```
-check for the image with the name `blockchain`.
+check for the image with the name `blockchain_image`.
 
 Now that you got your images you can get your docker containers up and running.
 To run the docker-compose type:
