@@ -15,11 +15,7 @@ connections = ["http://192.168.0.1:5001",
 			   "http://192.168.0.1:5003",
 			   "http://192.168.0.1:5004"]
 
-
-
 connections.remove(sys.argv[1])
-
-print(str(connections))
 
 blockchain = BlockChain()
 
@@ -100,7 +96,7 @@ def get_info():
 	return jsonify(chain)
 
 
-@app.route('/join_network', methods=['GET'])
+@app.route('/join_network', methods=['POST'])
 def join_network():
 	global connections
 	request_json = request.get_json()
@@ -108,9 +104,18 @@ def join_network():
 	chain = requests.get(conn + "/get_info")
 
 	connections = chain["connections"]
+	connections.append(request_json["connection"])
 	blockchain.set_chain(chain["chain"])
 	blockchain.set_transactions(chain["transactions"])
 	return "Success!"
+
+
+@app.route('/delete_info', methods=['GET'])
+def delete_info():
+	connections = []
+	blockchain.clear_transactions()
+	blockchain.clear_chain()
+	return "Deleted info."
 
 
 

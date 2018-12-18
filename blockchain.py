@@ -37,6 +37,9 @@ class BlockChain:
 	def get_chain(self):
 		return self.chain
 
+	def clear_chain(self):
+		self.chain = []
+
 
 	def check_if_transaction_exists(self, transaction):
 		for t in self.transactions:
@@ -79,7 +82,7 @@ class BlockChain:
 			
 			temp_hash_256_string = str(block["blocknumber"]) + str(block["data"]) + str(old_block["hash"])
 			temp_hash = self.hash_256(temp_hash_256_string + str(block['nounce']))
-			
+
 			if temp_hash == block["hash"]:
 				return True
 		return False
