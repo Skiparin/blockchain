@@ -101,7 +101,7 @@ def join_network():
 	global connections
 	request_json = request.get_json()
 	conn = request_json["connection"]
-	chain = requests.get(conn + "/get_info")
+	chain = requests.get(conn + "/get_info").json()
 
 	connections = chain["connections"]
 	connections.append(request_json["connection"])
