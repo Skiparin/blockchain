@@ -9,7 +9,7 @@ from blockchain import BlockChain
 
 app = Flask(__name__)
 
-connections = ["localhost:5000", "localhost:5001"]
+connections = ["http://localhost:5000", "http://localhost:5001"]
 
 blockchain = BlockChain()
 
